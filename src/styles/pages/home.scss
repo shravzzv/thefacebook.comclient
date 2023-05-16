@@ -4,32 +4,7 @@
     display: flex;
     gap: 5px;
 
-    .left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      border: 2px dashed #395795;
-      padding: 2px 2px 20px;
-      height: max-content;
-
-      label {
-        text-decoration: none;
-      }
-
-      input {
-        background-color: #d9dfea;
-      }
-
-      div {
-        button {
-          background-color: #538adc;
-          color: white;
-          margin-right: 1em;
-        }
-      }
-    }
-
-    .right {
+    .content {
       border: 1px solid #395795;
       .top {
         background-color: #395795;

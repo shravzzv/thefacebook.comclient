@@ -1,21 +1,14 @@
+import { Link } from 'react-router-dom'
 import '../styles/pages/home.scss'
+import AuthBox from '../components/authBox'
 
 const Home = () => {
   return (
     <div className='home'>
       <div className='wrapper'>
-        <div className='left'>
-          <label htmlFor=''>Email:</label>
-          <input type='text' />
-          <label htmlFor=''>Password:</label>
-          <input type='password' />
-          <div>
-            <button>Register</button>
-            <button>Login</button>
-          </div>
-        </div>
+        <AuthBox />
 
-        <div className='right'>
+        <div className='content'>
           <p className='top'>Welcome to Thefacebook!</p>
           <div className='main'>
             <h1>[ Welcome to Thefacebook ]</h1>
@@ -47,8 +40,12 @@ const Home = () => {
               registered, you can log in.
             </p>
             <div className='buttons'>
-              <button>Register</button>
-              <button>Login</button>
+              <Link to='/register'>
+                <button>Register</button>
+              </Link>
+              <Link to='/login'>
+                <button>Login</button>
+              </Link>
             </div>
           </div>
         </div>
