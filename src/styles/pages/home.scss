@@ -1,0 +1,88 @@
+.home {
+  margin: 3px 0 15px;
+  .wrapper {
+    display: flex;
+    gap: 5px;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      border: 2px dashed #395795;
+      padding: 2px 2px 20px;
+      height: max-content;
+
+      label {
+        text-decoration: none;
+      }
+
+      input {
+        background-color: #d9dfea;
+      }
+
+      div {
+        button {
+          background-color: #538adc;
+          color: white;
+          margin-right: 1em;
+        }
+      }
+    }
+
+    .right {
+      border: 1px solid #395795;
+      .top {
+        background-color: #395795;
+        margin-top: 0;
+        padding: 2px 0;
+        font-weight: bold;
+        color: white;
+      }
+
+      .main {
+        display: flex;
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        h1 {
+          align-self: center;
+          margin: 0 0 20px 0;
+        }
+
+        p {
+          padding: 0;
+          margin: 0 0 10px;
+
+          a {
+            color: #538adc;
+            text-decoration: none;
+            font-weight: bold;
+          }
+        }
+
+        .schools {
+          text-align: center;
+          padding: 0 30px;
+        }
+
+        ul {
+          margin-top: 0;
+        }
+
+        .buttons {
+          display: flex;
+          align-self: center;
+          gap: 10px;
+          margin: 10px;
+
+          button {
+            background-color: #538adc;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
