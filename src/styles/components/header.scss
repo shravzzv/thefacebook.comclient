@@ -1,0 +1,24 @@
+.header {
+  .wrapper {
+    display: flex;
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      .links {
+        display: flex;
+        background-color: #395795;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1em;
+
+        .link {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}

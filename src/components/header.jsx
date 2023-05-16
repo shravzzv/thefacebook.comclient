@@ -12,10 +12,18 @@ const Header = () => {
         <div className='right'>
           <img src='/assets/header logo_right.jpeg' alt='the facebook logo' />
           <div className='links'>
-            <Link to='/'>Home</Link>
-            <Link to='/login'>login</Link>
-            <Link to='/register'>register</Link>
-            <Link to='/about'>about</Link>
+            <Link to='/' className='link'>
+              Home
+            </Link>
+            <Link to='/login' className='link'>
+              login
+            </Link>
+            <Link to='/register' className='link'>
+              register
+            </Link>
+            <Link to='/about' className='link'>
+              about
+            </Link>
           </div>
         </div>
       </div>
