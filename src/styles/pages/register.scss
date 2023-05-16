@@ -1,0 +1,61 @@
+.register {
+  margin: 3px 0 15px;
+
+  .wrapper {
+    display: flex;
+    gap: 5px;
+
+    .content {
+      border: 1px solid #395795;
+      .top {
+        background-color: #395795;
+        margin-top: 0;
+        padding: 2px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .main {
+        padding: 0 20px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+
+          .form-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            label {
+              width: 120px; // Adjust the width as needed
+              text-align: left;
+            }
+
+            input {
+              flex: 1;
+              background-color: #d9dfea;
+            }
+
+            .check {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
+
+          button {
+            width: max-content;
+            background-color: #538adc;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
