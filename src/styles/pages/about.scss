@@ -1,0 +1,45 @@
+.about {
+  margin: 3px 0 15px;
+
+  .wrapper {
+    display: flex;
+    gap: 5px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #395795;
+      width: 100%;
+
+      .card {
+        border: 1px solid #395795;
+        margin: 10px;
+        width: 80%;
+        .title {
+          background-color: #395795;
+          margin: 0;
+          padding: 2px;
+          font-weight: bold;
+          color: white;
+        }
+        .info {
+          padding: 5px 20px;
+          a {
+            text-decoration: none;
+            color: #538adc;
+            
+          }
+        }
+      }
+
+      button {
+        background-color: #538adc;
+        color: white;
+        padding: 2px 20px;
+        margin: 10px;
+      }
+    }
+  }
+}
