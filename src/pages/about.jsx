@@ -1,5 +1,6 @@
-import '../styles/pages/about.scss'
+import '../styles/pages/footer_pages.scss'
 import AuthBox from '../components/authBox'
+import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
@@ -12,16 +13,17 @@ const About = () => {
           <div className='card'>
             <p className='title'>The Project</p>
             <div className='info'>
+              <p>This is a reproduction of an early version of facebook.</p>
               <p>Thefacebook is an online directory that connects people through social networks at colleges and universities.</p>
             </div>
           </div>
           <div className="card">
             <p className="title">The People</p>
             <div className="info">
-              <p><a href="/contact">Sai Shravan</a> The person behind this project</p>
+              <p><Link to="/contact">Sai Shravan</Link> The person behind this project</p>
             </div>
           </div>
-          <button>Home</button>
+          <button><Link to="/">Home</Link></button>
         </div>
       </div>
     </div>
