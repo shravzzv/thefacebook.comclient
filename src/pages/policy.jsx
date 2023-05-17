@@ -1,5 +1,6 @@
 import '../styles/pages/footer_pages.scss'
 import AuthBox from '../components/authBox'
+import { Link } from 'react-router-dom'
 
 const Policy = () => {
     return (
@@ -92,7 +93,7 @@ const Policy = () => {
                             <p>We reserve the right to change our privacy policy at any time. If we do this, we will post the changes on our web site so our users are always aware of what information we collect, how we use it, and under what circumstances, if any, we disclose it. If we are going to use users' personally identifiable information in a manner different from that stated at the time of collection, we will notify users via email.</p>
                         </div>
                     </div>
-                    <button><a href="/">home</a></button>
+                    <button><Link to="/">home</Link></button>
                 </div>
             </div>
         </div>
