@@ -7,12 +7,11 @@ const Footer = () => {
       <div className='wrapper'>
         <div className='links'>
           <Link to='/about'>about</Link>
-          <Link to='/'>contact</Link>
-          <Link to='/'>jobs</Link>
-          <Link to='/'>faq</Link>
-          <Link to='/'>advertise</Link>
-          <Link to='/'>terms</Link>
-          <Link to='/'>privacy</Link>
+          <Link to='/contact'>contact</Link>
+          <Link to='/faq'>faq</Link>
+          <Link to='/media'>advertise</Link>
+          <Link to='/terms'>terms</Link>
+          <Link to='/policy'>privacy</Link>
         </div>
         <div className='legal'>
           <p>a Sai Shravan production</p>
