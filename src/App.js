@@ -11,6 +11,7 @@ import Faq from './pages/faq'
 import Media from './pages/media'
 import Terms from './pages/terms'
 import Policy from './pages/policy'
+import Profile from './pages/profile'
 import NoMatch from './pages/noMatch'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='media' element={<Media />} />
           <Route path='terms' element={<Terms />} />
           <Route path='policy' element={<Policy />} />
+          <Route path='profile' element={<Profile />} />
           <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>
