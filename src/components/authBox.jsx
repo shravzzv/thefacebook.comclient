@@ -6,15 +6,42 @@ const AuthBox = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAuthDispatch()
+  const url = 'http://localhost:5000/api'
 
-  const handleRegister = () => {
-    // Register logic
-    dispatch({ email, password })
+  const handleRegister = async () => {
+    fetch(`${url}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: 'user_registered',
+          payload: data
+        })
+      })
+      .catch((err) => console.log(err))
   };
 
   const handleLogin = () => {
-    // Login logic
-    dispatch({ email, password })
+    fetch(`${url}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: 'user_logged_in',
+          payload: data
+        })
+      })
+      .catch((err) => console.log(err))
   };
 
   return (
