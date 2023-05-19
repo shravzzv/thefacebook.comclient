@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Specify the package ecosystem, in this case, npm
+    directory: "/" # Location of package manifests, adjust this path if necessary
+    schedule:
+      interval: "weekly" # Set the desired update interval
