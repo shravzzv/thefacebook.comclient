@@ -1,15 +1,33 @@
+# Define the name of the workflow
 name: Simple Test Workflow
 
+# Specify the events that trigger the workflow
 on:
-  push:
-  
+  push: # Trigger the workflow on every push to the repository
+  pull_request: # Trigger the workflow when a pull request is opened or updated
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Run test
-        run: echo "Running the test script"
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          # Use Node.js version 14 for the workflow
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+        # Install project dependencies using npm
+
+      # Step 4: Run tests
+      - name: Run tests
+        run: npm test
+        # Run the test script using npm
