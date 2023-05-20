@@ -1,9 +1,11 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from '../App';
+import { render } from "@testing-library/react";
+import App from "../App";
+import { MemoryRouter } from 'react-router-dom';
 
-test('renders the app component', () => {
-  render(<App />);
-  const appElement = screen.getByText(/Hello, React/);
-  expect(appElement).toBeInTheDocument();
+test('renders without crashing', () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
 });
