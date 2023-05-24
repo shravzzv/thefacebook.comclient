@@ -12,6 +12,7 @@ const Footer = () => {
           <Link to='/media'>advertise</Link>
           <Link to='/terms'>terms</Link>
           <Link to='/policy'>privacy</Link>
+          <Link to='/profile'>test profile</Link>
         </div>
         <div className='legal'>
           <p>a Sai Shravan production</p>
