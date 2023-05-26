@@ -1,60 +1,71 @@
 import { useState } from 'react';
 import '../styles/components/authBox.scss';
 import { useAuthDispatch } from '../context/auth';
+import { registerUser, loginUser } from '../api/auth';
 
 const AuthBox = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAuthDispatch()
-  const url = 'http://localhost:5000/api'
 
-  const handleRegister = async () => {
-    fetch(`${url}/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    try {
+      const data = await registerUser(email, password);
+      if (data.error) {
+        alert(data.error);
+      } else {
         dispatch({
-          type: 'user_registered',
-          payload: data
-        })
-      })
-      .catch((err) => console.log(err))
+          type: 'USER_REGISTERED',
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleLogin = () => {
-    fetch(`${url}/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      const data = await loginUser(email, password)
+      if (data.error) {
+        alert(data.error);
+      } else {
         dispatch({
-          type: 'user_logged_in',
-          payload: data
-        })
-      })
-      .catch((err) => console.log(err))
+          type: 'USER_LOGGED_IN',
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Determine the action based on the button's name or any other condition
+    if (e.nativeEvent.submitter.name === 'login') {
+      handleLogin(e);
+    } else if (e.nativeEvent.submitter.name === 'register') {
+      handleRegister(e);
+    }
   };
 
   return (
-    <div className='authBox'>
+    <form className='authBox' onSubmit={handleSubmit}>
       <label htmlFor='email'>Email:</label>
-      <input type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input type='email' value={email} required onChange={(e) => setEmail(e.target.value)} />
+
       <label htmlFor='password'>Password:</label>
-      <input type='password' id='password' autoComplete='true' value={password} onChange={e => setPassword(e.target.value)} />
+      <input type='password' value={password} required onChange={(e) => setPassword(e.target.value)} autoComplete='true' />
+
       <div>
-        <button onClick={handleRegister}>Register</button>
-        <button onClick={handleLogin}>Login</button>
+        <button type="submit" name="login">Login</button>
+        <button type="submit" name="register">Register</button>
       </div>
-    </div>
+    </form>
   );
 };
 
