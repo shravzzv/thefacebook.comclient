@@ -1,13 +1,13 @@
 const url = 'http://localhost:5000/api';
 
-export const registerUser = async (email, password) => {
+export const registerUser = async (email, password, name, status) => {
   try {
     const response = await fetch(`${url}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, name, status }),
     });
     const data = await response.json();
     return data;
