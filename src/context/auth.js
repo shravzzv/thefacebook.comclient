@@ -1,26 +1,28 @@
 import { createContext, useContext, useReducer } from 'react'
 
-export const AuthContext = createContext(null)
-export const AuthDispatchContext = createContext(null)
+const AuthContext = createContext(null)
+const AuthDispatchContext = createContext(null)
 
 const authReducer = (user, action) => {
   switch (action.type) {
-    case 'user_registered': {
-      console.info(action.payload);
-      localStorage.setItem('token', action?.payload?.token)
-      return action?.payload?.user
+    case 'USER_REGISTERED':
+    case 'USER_LOGGED_IN': {
+      const { accessToken, refreshToken, user: { email, profile } } = action.payload.data
+      localStorage.setItem('accessToken', accessToken)
+      localStorage.setItem('refreshToken', refreshToken)
+      localStorage.setItem('email', email)
+      localStorage.setItem('profile', profile)
+      return email
     }
-    case 'user_logged_in': {
-      console.info(action.payload);
-      localStorage.setItem('token', action?.payload?.token)
-      return action?.payload?.user
-    }
-    case 'user_logged_out': {
-      localStorage.removeItem('token')
-      return initialState
+    case 'USER_LOGGED_OUT': {
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
+      localStorage.removeItem('email')
+      localStorage.removeItem('profile')
+      return null
     }
     default: {
-      throw Error('Unknown action in reducer: ' + action.type)
+      throw new Error(`Unknown action type: ${action.type}`);
     }
   }
 }
@@ -34,6 +36,7 @@ export const useAuthDispatch = () => {
 }
 
 export const AuthProvider = ({ children }) => {
+  const initialState = localStorage.getItem('email') || null
   const [user, dispatch] = useReducer(authReducer, initialState)
 
   return (
@@ -44,4 +47,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   )
 }
-const initialState = null
