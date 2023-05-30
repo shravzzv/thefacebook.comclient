@@ -14,9 +14,11 @@ import Policy from './pages/policy'
 import Profile from './pages/profile'
 import NoMatch from './pages/noMatch'
 import Onboarding from './pages/onboarding'
+import { useAuth } from './context/auth'
 
 function App() {
-  const auth = false
+  const token = useAuth()
+
   return (
     <div className='App'>
       <Routes>
@@ -30,8 +32,14 @@ function App() {
           <Route path='media' element={<Media />} />
           <Route path='terms' element={<Terms />} />
           <Route path='policy' element={<Policy />} />
-          <Route path='profile' element={!auth ? <Navigate to="/login"/> : <Profile />} />
-          <Route path='onboarding' element={!auth ? <Navigate to="/login"/> :<Onboarding />} />
+          <Route
+            path='profile'
+            element={!token ? <Navigate to='/login' /> : <Profile />}
+          />
+          <Route
+            path='onboarding'
+            element={!token ? <Navigate to='/login' /> : <Onboarding />}
+          />
           <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>
