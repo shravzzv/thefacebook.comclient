@@ -2,12 +2,13 @@ import { useState } from 'react';
 import '../styles/components/authBox.scss';
 import { useAuthDispatch } from '../context/auth';
 import { registerUser, loginUser } from '../api/auth';
+import {useNavigate} from "react-router-dom"
 
 const AuthBox = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAuthDispatch()
-
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -20,6 +21,7 @@ const AuthBox = () => {
           type: 'USER_REGISTERED',
           payload: data,
         });
+        navigate("/onboarding")
       }
     } catch (error) {
       console.log(error);
@@ -37,6 +39,7 @@ const AuthBox = () => {
           type: 'USER_LOGGED_IN',
           payload: data,
         });
+        navigate("/profile")
       }
     } catch (error) {
       console.log(error);
