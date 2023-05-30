@@ -13,6 +13,7 @@ import Terms from './pages/terms'
 import Policy from './pages/policy'
 import Profile from './pages/profile'
 import NoMatch from './pages/noMatch'
+import Onboarding from './pages/onboarding'
 import { AuthProvider } from './context/auth'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path='terms' element={<Terms />} />
             <Route path='policy' element={<Policy />} />
             <Route path='profile' element={<Profile />} />
+            <Route path='onboarding' element={<Onboarding />} />
             <Route path='*' element={<NoMatch />} />
           </Route>
         </Routes>
