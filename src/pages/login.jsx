@@ -3,11 +3,13 @@ import '../styles/pages/login.scss'
 import AuthBox from "../components/authBox"
 import { useAuthDispatch } from '../context/auth';
 import { loginUser } from '../api/auth';
+import {useNavigate} from "react-router-dom"
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAuthDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     try {
@@ -20,6 +22,7 @@ const Login = () => {
           type: 'USER_LOGGED_IN',
           payload: data,
         });
+        navigate("/profile")
       }
     } catch (error) {
       console.log(error);
