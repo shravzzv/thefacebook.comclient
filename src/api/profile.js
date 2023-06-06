@@ -1,4 +1,4 @@
-const url = 'http://localhost:5000/api'
+const url = "https://thefacebook-comserver.vercel.app"
 
 const authConfig = () => {
   const token = localStorage.getItem('accessToken')
@@ -12,7 +12,7 @@ const authConfig = () => {
 
 export const fetchUserProfile = async () => {
   try {
-    const response = await fetch(`${url}/profile`, {
+    const response = await fetch(`${url}/api/profile`, {
       method: 'GET',
       ...authConfig(),
     })
@@ -26,7 +26,7 @@ export const fetchUserProfile = async () => {
 
 export const updateUserProfile = async (userdata) => {
   try {
-    const response = await fetch(`${url}/profile`, {
+    const response = await fetch(`${url}/api/profile`, {
       method: 'PATCH',
       ...authConfig(),
       body: JSON.stringify(userdata),
