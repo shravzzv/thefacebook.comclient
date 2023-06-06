@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Sidebar from '../components/sidebar'
 import { useAuth } from '../context/auth'
 
-const Profile = ({ id }) => {
+const Profile = () => {
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
@@ -34,7 +34,7 @@ const Profile = ({ id }) => {
 
   useEffect(() => {
     // Fetch user data
-    fetch(`http://localhost:5000/api/profile/${id}`, {
+    fetch(`http://localhost:5000/api/profile`, {
       method: 'GET',
       headers: {
         Authorization: token,
@@ -42,13 +42,14 @@ const Profile = ({ id }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setProfile({ ...profile, data })
+        setProfile({ ...data.data })
       })
       .catch((error) => {
         console.error('Error fetching user data:', error)
       })
-  }, [id, profile, token])
+  }, [token])
 
+  // todo: update styles to avoid overlapping
   return (
     <div className='profile_page'>
       <Sidebar />
@@ -63,19 +64,28 @@ const Profile = ({ id }) => {
               <div className='card_info'>
                 <img
                   className='profile_pic'
-                  src={profile.profilePicture}
-                  // src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
+                  src={
+                    profile.profilePicture ||
+                    'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80'
+                  }
                   alt='profile'
                 />
               </div>
             </div>
 
-            <p className='box'>Send {profile.firstName} a Message</p>
-            <p className='box'>Poke him</p>
+            <p className='box'>Send {profile.firstName || 'them'} a Message</p>
+            <p className='box'>
+              Poke{' '}
+              {profile.sex === 'male'
+                ? 'him'
+                : profile.sex === 'female'
+                ? 'her'
+                : 'them'}
+            </p>
             <div className='card'>
               <p className='card_title'>Connection</p>
               <div className='card_info'>
-                <p>You are in a relationship with Brian.</p>
+                <p>You are in a relationship with {profile.firstName}.</p>
               </div>
             </div>
             <div className='card'>
@@ -83,7 +93,7 @@ const Profile = ({ id }) => {
               <div className='card_info'>
                 <p>
                   You have <Link to='/profile'>10 friends</Link> in commom with
-                  Brian.
+                  {profile.username || 'them'}.
                 </p>
               </div>
             </div>
@@ -97,7 +107,7 @@ const Profile = ({ id }) => {
               <p className='card_title'>Friends</p>
               <div className='card_info'>
                 <div className='images'>
-                  {profile.friends.map((friend) => (
+                  {profile?.friends?.map((friend) => (
                     <img
                       src={friend.profilePicture}
                       alt={profile.username}
