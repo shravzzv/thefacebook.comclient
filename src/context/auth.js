@@ -9,14 +9,12 @@ const authReducer = (token, action) => {
   switch (action.type) {
     case 'USER_REGISTERED':
     case 'USER_LOGGED_IN': {
-      const { accessToken, refreshToken } = action.payload.data
+      const { accessToken } = action.payload
       localStorage.setItem('accessToken', accessToken)
-      localStorage.setItem('refreshToken', refreshToken)
       return accessToken
     }
     case 'USER_LOGGED_OUT': {
       localStorage.removeItem('accessToken')
-      localStorage.removeItem('refreshToken')
       return initialState
     }
     default: {

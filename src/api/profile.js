@@ -10,33 +10,31 @@ const authConfig = () => {
   }
 }
 
-export const onboardUser = async (userData) => {
-  try {
-    const response = await fetch(`${url}/profile/onboarding`, {
-      method: 'POST',
-      ...authConfig(),
-      body: JSON.stringify({ ...userData }),
-    })
-
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.log(error)
-    throw new Error('Error occurred during onboarding.')
-  }
-}
-
-export const fetchProfile = async (id) => {
+export const fetchUserProfile = async () => {
   try {
     const response = await fetch(`${url}/profile`, {
       method: 'GET',
       ...authConfig(),
     })
-
     const data = await response.json()
     return data
   } catch (error) {
     console.log(error)
     throw new Error('Error occurred during fetching profile.')
+  }
+}
+
+export const updateUserProfile = async (userdata) => {
+  try {
+    const response = await fetch(`${url}/profile`, {
+      method: 'PATCH',
+      ...authConfig(),
+      body: JSON.stringify(userdata),
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log(error)
+    throw new Error('Error occurred during updating profile.')
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/pages/onboarding.scss'
-import { onboardUser } from '../api/profile'
 import { useNavigate } from 'react-router-dom'
+import { updateUserProfile } from '../api/profile'
 
 const Onboarding = () => {
   const [formData, setFormData] = useState({
@@ -41,13 +41,13 @@ const Onboarding = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
     try {
-      const data = await onboardUser(formData)
-      if (data.error) {
-        alert(data.error)
-      } else {
+      e.preventDefault()
+      const { success, message } = await updateUserProfile(formData)
+      if (success) {
         navigate('/profile')
+      } else {
+        alert(message)
       }
     } catch (error) {
       console.log(error)
@@ -144,6 +144,16 @@ const Onboarding = () => {
                 onChange={handleChange}
               />{' '}
               Female
+            </label>
+            <label>
+              <input
+                type='radio'
+                name='sex'
+                value='other'
+                checked={formData.sex === 'other'}
+                onChange={handleChange}
+              />{' '}
+              Other
             </label>
           </label>
 
