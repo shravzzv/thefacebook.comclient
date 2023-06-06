@@ -1,0 +1,48 @@
+.onboarding {
+  margin: 3px 0 15px;
+  border: 1px solid #395795;
+
+  .top {
+    background-color: #395795;
+    margin-top: 0;
+    padding: 2px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .wrapper {
+    padding: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type='text'],
+    input[type='date'],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 4px;
+      resize: vertical;
+    }
+
+    input[type='radio'],
+    input[type='checkbox'] {
+      margin-right: 5px;
+    }
+
+    button[type='submit'] {
+      background-color: #395795;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  }
+}

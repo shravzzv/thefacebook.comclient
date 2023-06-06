@@ -3,26 +3,22 @@ import { createContext, useContext, useReducer } from 'react'
 const AuthContext = createContext(null)
 const AuthDispatchContext = createContext(null)
 
-const authReducer = (user, action) => {
+const initialState = localStorage.getItem('accessToken') || null
+
+const authReducer = (token, action) => {
   switch (action.type) {
     case 'USER_REGISTERED':
     case 'USER_LOGGED_IN': {
-      const { accessToken, refreshToken, user: { email, profile } } = action.payload.data
+      const { accessToken } = action.payload
       localStorage.setItem('accessToken', accessToken)
-      localStorage.setItem('refreshToken', refreshToken)
-      localStorage.setItem('email', email)
-      localStorage.setItem('profile', profile)
-      return email
+      return accessToken
     }
     case 'USER_LOGGED_OUT': {
       localStorage.removeItem('accessToken')
-      localStorage.removeItem('refreshToken')
-      localStorage.removeItem('email')
-      localStorage.removeItem('profile')
-      return null
+      return initialState
     }
     default: {
-      throw new Error(`Unknown action type: ${action.type}`);
+      throw new Error(`Unknown action type: ${action.type}`)
     }
   }
 }
@@ -36,11 +32,10 @@ export const useAuthDispatch = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-  const initialState = localStorage.getItem('email') || null
-  const [user, dispatch] = useReducer(authReducer, initialState)
+  const [token, dispatch] = useReducer(authReducer, initialState)
 
   return (
-    <AuthContext.Provider value={user}>
+    <AuthContext.Provider value={token}>
       <AuthDispatchContext.Provider value={dispatch}>
         {children}
       </AuthDispatchContext.Provider>

@@ -1,13 +1,21 @@
 .header {
   border: 1px solid #395795;
-  padding: 2px 0;
+  padding: 0;
+  margin: 10px 0;
 
   .wrapper {
     display: flex;
     align-items: center;
     gap: 0;
+    background-color: #395795;
+
+    .left {
+      width: 40%;
+      height: fit-content;
+    }
 
     .right {
+      width: 46.5%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -18,11 +26,16 @@
         background-color: #395795;
         align-items: center;
         justify-content: flex-start;
+        padding: 0 4px;
         gap: 1em;
 
-        .link {
+        .link,
+        .logout {
           text-decoration: none;
           color: white;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
         }
       }
     }
