@@ -82,10 +82,10 @@ const AuthBox = () => {
       />
 
       <div>
-        <button type='submit' name='login'>
+        <button type='submit' name='login' disabled>
           Login
         </button>
-        <button type='submit' name='register'>
+        <button type='submit' name='register' disabled>
           Register
         </button>
       </div>

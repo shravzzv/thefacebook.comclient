@@ -53,6 +53,10 @@
             width: max-content;
             background-color: #538adc;
             color: white;
+            &:hover {
+              background-color: #3a6ca7;
+              cursor: not-allowed;
+            }
           }
         }
       }

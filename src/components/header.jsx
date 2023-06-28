@@ -22,6 +22,9 @@ const Header = () => {
         <div className='right'>
           <img src='/assets/header logo_right.jpeg' alt='the facebook logo' />
           <div className='links'>
+            <Link to='/testprofile' className='link'>
+              test profile
+            </Link>
             <Link to='/' className='link'>
               Home
             </Link>

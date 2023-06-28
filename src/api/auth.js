@@ -1,5 +1,5 @@
-// const url = 'http://localhost:5000/api'
-const url = 'https://thefacebook-comserver.vercel.app'
+const url = 'http://localhost:5000'
+// const url = 'https://thefacebook-comserver.vercel.app'
 
 export const registerUser = async (credentials) => {
   try {

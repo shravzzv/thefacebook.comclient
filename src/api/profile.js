@@ -1,4 +1,5 @@
-const url = "https://thefacebook-comserver.vercel.app"
+const url = 'http://localhost:5000'
+// const url = 'https://thefacebook-comserver.vercel.app'
 
 const authConfig = () => {
   const token = localStorage.getItem('accessToken')
@@ -32,6 +33,7 @@ export const updateUserProfile = async (userdata) => {
       body: JSON.stringify(userdata),
     })
     const data = await response.json()
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)

@@ -19,6 +19,10 @@
       background-color: #538adc;
       color: white;
       margin-right: 1em;
+      &:hover {
+        background-color: #3a6ca7;
+        cursor: not-allowed;
+      }
     }
   }
 }

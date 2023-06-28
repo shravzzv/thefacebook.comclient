@@ -37,6 +37,10 @@
             color: white;
             padding: 2px 20px;
             margin-right: 5px;
+            &:hover {
+              background-color: #3a6ca7;
+              cursor: not-allowed;
+            }
           }
         }
       }

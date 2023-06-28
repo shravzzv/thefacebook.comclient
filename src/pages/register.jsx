@@ -120,7 +120,7 @@ const Register = () => {
                   <Link to='/terms'>Terms of Use</Link>.
                 </label>
               </div>
-              <button type='submit' disabled={!terms}>
+              <button type='submit' disabled>
                 Register Now!
               </button>
             </form>
