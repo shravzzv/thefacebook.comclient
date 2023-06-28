@@ -49,7 +49,6 @@ const Profile = () => {
       })
   }, [token])
 
-  // todo: update styles to avoid overlapping
   return (
     <div className='profile_page'>
       <Sidebar />
