@@ -15,6 +15,7 @@ import Profile from './pages/profile'
 import NoMatch from './pages/noMatch'
 import Onboarding from './pages/onboarding'
 import { useAuth } from './context/auth'
+import TestProfile from './pages/testProfile'
 
 function App() {
   const token = useAuth()
@@ -32,6 +33,7 @@ function App() {
           <Route path='media' element={<Media />} />
           <Route path='terms' element={<Terms />} />
           <Route path='policy' element={<Policy />} />
+          <Route path='testprofile' element={<TestProfile />} />
           <Route
             path='profile'
             element={!token ? <Navigate to='/login' /> : <Profile />}
