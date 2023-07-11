@@ -17,11 +17,13 @@ This project is a recreation of the first version of Facebook using React. It ai
 
 ## Features
 
-- User authentication: Sign up, log in, and log out functionalities.
+<!-- - User authentication: Sign up, log in, and log out functionalities. -->
 - User Profiles: View and edit user profiles.
   <!-- - News Feed: Displaying posts from friends and users. -->
   <!-- - Friend Requests: Send and accept friend requests. -->
   <!-- - Likes and Comments: Like and comment on posts. -->
+
+  ### The current version of the app in this repository might have some functionality issues that need to be addressed. Apologies for any inconvenience caused and want to ensure transparency regarding the known issues.
 
 ## Installation
 
